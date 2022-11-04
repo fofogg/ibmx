@@ -13,4 +13,4 @@ jobs:
           name: pgyniub/ibmx
           username: '${{ secrets.DOCKER_USERNAME }}'
           password: '${{ secrets.DOCKER_PASSWORD }}'
-          platforms: linux/amd64,linux/s390x
+          platforms: linux/s390x
