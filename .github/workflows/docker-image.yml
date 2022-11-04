@@ -1,16 +1,14 @@
-name: Build Docker Image
-on:
-  workflow_dispatch:
+name: Publish Docker
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Building Docker Image
-        uses: elgohr/Publish-Docker-Github-Action@v4
-        with:
-          # 下方的name格式为：Docker Hub ID/自定义镜像名称
-          name: pgyniub/ibmx
-          username: '${{ secrets.DOCKER_USERNAME }}'
-          password: '${{ secrets.DOCKER_PASSWORD }}'
-          platforms: linux/s390x
+    - uses: actions/checkout@v3
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        name: pgyniub/ibmx
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        platforms: linux/s390x
